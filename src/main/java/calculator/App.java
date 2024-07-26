@@ -22,7 +22,7 @@ public class App {
 
             // 연산은 Calculator 에서 구현
             try {
-                list = calculator.calculate(firstNum, secondNum, signal);
+                calculator.calculate(firstNum, secondNum, signal);
             } catch (DivideException e) {
                 System.out.println(e.getMessage());
             }
@@ -31,6 +31,7 @@ public class App {
             // 향상된 for 문 활용 저장 결과 출력
             System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
             if (sc.next().equals("inquiry")) {
+                list = calculator.getList();
                 for (Integer temp : list) {
                     System.out.print(temp + " ");
                 }

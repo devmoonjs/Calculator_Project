@@ -5,17 +5,24 @@ import java.util.List;
 import java.util.Scanner;
 
 class DivideException extends Exception {
-    // 오버로딩
+    // 0으로 나눌 때 예외 처리
     DivideException(String message) {
-        System.out.println(message);
+        super(message);
     }
 }
 
 public class Calculator {
 
-    List<Integer> list = new ArrayList<>();
+    private List<Integer> list = new ArrayList<>();
 
-    public List<Integer> calculate(int firstNum, int secondNum, char signal) throws DivideException {
+    public List<Integer> getList() {
+        return list;
+    }
+    public void setList() {
+
+    }
+
+    public void calculate(int firstNum, int secondNum, char signal) throws DivideException {
         int result = 0; // 사칙연산 결과 값 저장 변수
         switch (signal) {
             case '+' :
@@ -46,7 +53,5 @@ public class Calculator {
         // 가장 먼저 연산된 결과 삭제
         System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력)");
         if (sc.next().equals("remove")) list.remove(0);
-
-        return list;
     }
 }
