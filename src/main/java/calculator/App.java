@@ -3,8 +3,6 @@ import java.util.*;
 
 public class App {
 
-    static int resultSize = 10;
-
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String exit = "";
@@ -39,12 +37,25 @@ public class App {
                     else System.out.println("나눗셈 연산에서 분모(두번째 정수)에 0이 입력될 수 없습니다.");
                     break;
             }
+
+            // list에 결과 저장
             System.out.println("결과 : " + result);
-            list.add(result); // list에 결과 저장
+            list.add(result);
 
+            // 가장 먼저 연산된 결과 삭제
             System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력)");
-            if (sc.next().equals("remove")) list.remove(0); // 가장 먼저 연산된 결과 삭제
+            if (sc.next().equals("remove")) list.remove(0);
 
+            // 향상된 for 문 활용 저장 결과 출력
+            System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
+            if (sc.next().equals("inquiry")) {
+                for (Integer temp : list) {
+                    System.out.print(temp + " ");
+                }
+                System.out.println();
+            }
+
+            // 추가 계산 여부
             System.out.println("더 계산하시겠습니까 ? (exit 입력 시 종료)");
             exit = sc.next();
         }
