@@ -12,8 +12,11 @@ class DivideException extends Exception {
 }
 
 public class Calculator {
+    private List<Integer> list;
 
-    private List<Integer> list = new ArrayList<>();
+    public Calculator() {
+        this.list = new ArrayList<>();
+    }
 
     public List<Integer> getList() {
         return list;
