@@ -37,11 +37,7 @@ public class App {
             // 향상된 for 문 활용 저장 결과 출력
             System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
             if (sc.next().equals("inquiry")) {
-                list = calculator.getList();
-                for (Integer temp : list) {
-                    System.out.print(temp + " ");
-                }
-                System.out.println();
+                calculator.inquiryResults();
             }
 
             // 추가 계산 여부

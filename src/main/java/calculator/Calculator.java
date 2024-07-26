@@ -18,13 +18,21 @@ public class Calculator {
     public List<Integer> getList() {
         return list;
     }
-    public void setList() {
 
+    public void setList() {
     }
 
     // 가장 먼저 저장된 데이터 삭제
     public void removeResult() {
         list.remove(0);
+    }
+
+    // 데이터 조회 기능
+    public void inquiryResults() {
+        for (Integer temp : list) {
+            System.out.print(temp + " ");
+        }
+        System.out.println();
     }
 
     public void calculate(int firstNum, int secondNum, char signal) throws DivideException {
