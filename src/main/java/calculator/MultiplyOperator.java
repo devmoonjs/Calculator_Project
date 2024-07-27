@@ -1,6 +1,6 @@
 package calculator;
 
-public class MultiplyOperator {
+public class MultiplyOperator implements Operator {
     private double left;
     private double right;
 
@@ -9,7 +9,7 @@ public class MultiplyOperator {
         this.right = right;
     }
 
-    public double mul() {
+    public double operate() {
         return left * right;
     }
 }

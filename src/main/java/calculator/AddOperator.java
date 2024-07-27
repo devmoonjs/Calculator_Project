@@ -1,6 +1,6 @@
 package calculator;
 
-public class AddOperator {
+public class AddOperator implements Operator {
 
     private double left;
     private double right;
@@ -10,7 +10,8 @@ public class AddOperator {
         this.right = right;
     }
 
-    public double add() {
+    @Override
+    public double operate() {
         return left + right;
     }
 }

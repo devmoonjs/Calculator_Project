@@ -39,17 +39,17 @@ public class ArithmeticCalculator extends Calculator {
         switch (signal) {
             case '+':
                 AddOperator addOperator = new AddOperator(left, right);
-                result = addOperator.add();
+                result = addOperator.operate();
                 break;
 
             case '-':
                 SubtractOperator subtractOperator = new SubtractOperator(left, right);
-                result = subtractOperator.sub();
+                result = subtractOperator.operate();
                 break;
 
             case '*':
                 MultiplyOperator multiplyOperator = new MultiplyOperator(left, right);
-                result = multiplyOperator.mul();
+                result = multiplyOperator.operate();
                 break;
 
             case '/':
@@ -58,9 +58,13 @@ public class ArithmeticCalculator extends Calculator {
                 }
                 else {
                     DivideOperator divideOperator = new DivideOperator(left, right);
-                    result = divideOperator.div();
+                    result = divideOperator.operate();
                 }
                 break;
+
+            case '%' :
+                ModOperator modOperator = new ModOperator(left, right);
+                result = modOperator.operate();
         }
         // list에 결과 저장
         System.out.println("결과 : " + result);
