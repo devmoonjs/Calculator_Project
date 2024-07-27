@@ -12,10 +12,13 @@ class DivideException extends Exception {
 }
 
 public class Calculator {
-    private List<Integer> list;
+    private List<Integer> list; // 사칙 연산 저장 List
+    private List<Double> circleList; // 원 너비 저장 List
+    public static final double PI = 3.14; // 파이 상수
 
     public Calculator() {
         this.list = new ArrayList<>();
+        this.circleList = new ArrayList<>();
     }
 
     public List<Integer> getList() {
@@ -25,15 +28,37 @@ public class Calculator {
     public void setList() {
     }
 
+    public List<Double> getCircleList() {
+        return circleList;
+    }
+
+    public void setCircleList() {
+    }
+
     // 가장 먼저 저장된 데이터 삭제
     public void removeResult() {
         list.remove(0);
     }
 
-    // 데이터 조회 기능
+    // 사첵연산 결과 전체 리스트 출력
     public void inquiryResults() {
         for (Integer temp : list) {
             System.out.print(temp + " ");
+        }
+        System.out.println();
+    }
+
+    // 원 너비 계산 & 출력 & 저장
+    public void calculateCircleArea(int r) {
+        double circleResult = r * r * PI;
+        System.out.print("원의 너비 : " + circleResult);
+        circleList.add(circleResult);
+    }
+
+    // 원의 너비 결과 전체 리스트 출력
+    public void inquiryCircleResults() {
+        for (Double v : circleList) {
+            System.out.println(v + " ");
         }
         System.out.println();
     }
