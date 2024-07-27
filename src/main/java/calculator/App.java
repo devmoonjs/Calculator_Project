@@ -7,7 +7,8 @@ public class App {
         Scanner sc = new Scanner(System.in);
         String exit = "";
 
-        Calculator calculator = new Calculator();
+        CircleCalculator circleCalculator = new CircleCalculator();
+        ArithmeticCalculator arithmeticCalculator = new ArithmeticCalculator();
 
         while(!exit.equals("exit")) {
 
@@ -15,44 +16,50 @@ public class App {
             int choose = sc.nextInt();
 
             switch (choose) {
-                case 0 :
+                case 0 : // 사칙연산 구현
                     System.out.println("첫 번째 숫자를 입력하세요 : ");
-                    int firstNum = sc.nextInt();
+                    arithmeticCalculator.setLeft(sc.nextDouble());
 
                     System.out.println("두 번째 숫자를 입력하세요 : ");
-                    int secondNum = sc.nextInt();
+                    arithmeticCalculator.setRight(sc.nextDouble());
 
                     System.out.println("사칙연산 기호를 입력하세요 : ");
-                    char signal = sc.next().charAt(0);
+                    arithmeticCalculator.setSignal(sc.next().charAt(0));
 
-                    // 연산은 Calculator 에서 구현
                     try {
-                        calculator.calculate(firstNum, secondNum, signal);
-                    } catch (DivideException e) {
+                        arithmeticCalculator.calculate();
+                    } catch (ArithmeticCalculator.DivideException e) {
                         System.out.println(e.getMessage());
                     }
 
                     // 가장 먼저 연산된 결과 삭제
                     System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력)");
                     if (sc.next().equals("remove")) {
-                        calculator.removeResult();
+                        arithmeticCalculator.removeResult();
                     }
 
                     // 향상된 for 문 활용 저장 결과 출력
                     System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
                     if (sc.next().equals("inquiry")) {
-                        calculator.inquiryResults();
+                        arithmeticCalculator.inquiryResults();
                     }
                     break;
 
-                case 1 :
+                case 1 : // 원의 너비 계산 구현
                     System.out.println("반지름을 입력하세요 : ");
-                    int r = sc.nextInt();
-                    calculator.calculateCircleArea(r);
+                    circleCalculator.setR(sc.nextInt());
+                    circleCalculator.calculate();
 
+                    // 가장 먼저 연산된 결과 삭제
+                    System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력)");
+                    if (sc.next().equals("remove")) {
+                        arithmeticCalculator.removeResult();
+                    }
+
+                    // 향상된 for 문 활용 저장 결과 출력
                     System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력시 조회)");
                     if (sc.next().equals("inquiry")) {
-                        calculator.inquiryCircleResults();
+                        circleCalculator.inquiryResults();
                     }
                     break;
             }

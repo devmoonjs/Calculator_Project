@@ -1,0 +1,76 @@
+package calculator;
+import java.util.ArrayList;
+import java.util.List;
+
+public class ArithmeticCalculator extends Calculator {
+
+    List<Double> arithlist;
+    private double left;
+    private double right;
+    private char signal;
+
+    public ArithmeticCalculator() {
+        this.arithlist = new ArrayList<>();
+    }
+
+    public void setLeft(double left) {
+        this.left = left;
+    }
+
+    public void setRight(double right) {
+        this.right = right;
+    }
+
+    public void setSignal(char signal) {
+        this.signal = signal;
+    }
+
+    public class DivideException extends RuntimeException {
+        // 0으로 나눌 때 예외 처리
+        DivideException(String message) {
+            super(message);
+        }
+    }
+
+    @Override
+    public void calculate() throws DivideException {
+
+        double result = 0; // 사칙연산 결과 값 저장 변수
+        switch (signal) {
+            case '+':
+                result = left + right;
+                break;
+
+            case '-':
+                result = left - right;
+                break;
+
+            case '*':
+                result = left * right;
+                break;
+
+            case '/':
+                if (right == 0) {
+                    throw new DivideException("0으로 나눌 수 없습니다. ");
+                }
+                break;
+        }
+
+        // list에 결과 저장
+        System.out.println("결과 : " + result);
+        arithlist.add(result);
+    }
+
+    // 가장 먼저 저장된 데이터 삭제
+    public void removeResult() {
+        arithlist.remove(0);
+    }
+
+    // 결과 전체 리스트 출력
+    public void inquiryResults() {
+        for (Double d : arithlist) {
+            System.out.print(d + " ");
+        }
+        System.out.println();
+    }
+}
