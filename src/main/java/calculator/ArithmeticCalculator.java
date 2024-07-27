@@ -38,24 +38,30 @@ public class ArithmeticCalculator extends Calculator {
         double result = 0; // 사칙연산 결과 값 저장 변수
         switch (signal) {
             case '+':
-                result = left + right;
+                AddOperator addOperator = new AddOperator(left, right);
+                result = addOperator.add();
                 break;
 
             case '-':
-                result = left - right;
+                SubtractOperator subtractOperator = new SubtractOperator(left, right);
+                result = subtractOperator.sub();
                 break;
 
             case '*':
-                result = left * right;
+                MultiplyOperator multiplyOperator = new MultiplyOperator(left, right);
+                result = multiplyOperator.mul();
                 break;
 
             case '/':
                 if (right == 0) {
                     throw new DivideException("0으로 나눌 수 없습니다. ");
                 }
+                else {
+                    DivideOperator divideOperator = new DivideOperator(left, right);
+                    result = divideOperator.div();
+                }
                 break;
         }
-
         // list에 결과 저장
         System.out.println("결과 : " + result);
         arithlist.add(result);

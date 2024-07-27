@@ -53,7 +53,7 @@ public class App {
                     // 가장 먼저 연산된 결과 삭제
                     System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력)");
                     if (sc.next().equals("remove")) {
-                        arithmeticCalculator.removeResult();
+                        circleCalculator.removeResult();
                     }
 
                     // 향상된 for 문 활용 저장 결과 출력
