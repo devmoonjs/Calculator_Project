@@ -39,13 +39,13 @@ public class App {
                     // 가장 먼저 연산된 결과 삭제
                     System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력)");
                     if (sc.next().equals("remove")) {
-                        arithmeticCalculator.removeResult();
+                        arithmeticCalculator.removeResult(arithmeticCalculator.getList());
                     }
 
                     // 향상된 for 문 활용 저장 결과 출력
                     System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
                     if (sc.next().equals("inquiry")) {
-                        arithmeticCalculator.inquiryResults();
+                        arithmeticCalculator.inquiryResults(arithmeticCalculator.getList());
                     }
                     break;
 
@@ -57,13 +57,13 @@ public class App {
                     // 가장 먼저 연산된 결과 삭제
                     System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력)");
                     if (sc.next().equals("remove")) {
-                        circleCalculator.removeResult();
+                        circleCalculator.removeResult(circleCalculator.getList());
                     }
 
                     // 향상된 for 문 활용 저장 결과 출력
                     System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력시 조회)");
                     if (sc.next().equals("inquiry")) {
-                        circleCalculator.inquiryResults();
+                        circleCalculator.inquiryResults(circleCalculator.getList());
                     }
                     break;
             }

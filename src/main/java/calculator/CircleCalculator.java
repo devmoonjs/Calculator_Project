@@ -17,6 +17,10 @@ public class CircleCalculator extends Calculator{
         this.r = r;
     }
 
+    public List<Double> getList() {
+        return circleList;
+    }
+
     // 계산
     public void calculate() {
         double circleResult = r * r * PI;
@@ -25,16 +29,13 @@ public class CircleCalculator extends Calculator{
     }
 
     // 결과 전체 출력
-    public void inquiryResults() {
-        for (Double v : circleList) {
-            System.out.print(v + " ");
-        }
-        System.out.println();
+    public void inquiryResults(List<Double> list) {
+        super.inquiryResults(circleList);
     }
 
     // 가장 오래된 결과 삭제
-    public void removeResult() {
-        circleList.remove(0);
+    public void removeResult(List<Double> list) {
+        super.removeResult(circleList);
     }
 
 

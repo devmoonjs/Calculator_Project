@@ -2,14 +2,18 @@ package calculator;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
-
-
 
 public abstract class Calculator {
 
     public abstract void calculate();
-    public abstract void inquiryResults();
-    public abstract void removeResult();
 
+    public void inquiryResults(List<Double> list) {
+        for (Double result : list) {
+            System.out.println(result);
+        }
+    }
+
+    public void removeResult(List<Double> list) {
+        list.remove(0);
+    }
 }
