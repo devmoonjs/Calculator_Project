@@ -28,7 +28,7 @@ public class App {
 
                     try {
                         arithmeticCalculator.calculate();
-                    } catch (ArithmeticCalculator.DivideException e) {
+                    } catch (DivideException e) {
                         System.out.println(e.getMessage());
                     }
 
