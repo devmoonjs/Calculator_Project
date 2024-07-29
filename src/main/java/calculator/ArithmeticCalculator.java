@@ -2,6 +2,8 @@ package calculator;
 import java.util.ArrayList;
 import java.util.List;
 
+import static calculator.OperatorType.PLUS;
+
 public class ArithmeticCalculator extends Calculator {
 
     List<Double> arithlist;
@@ -28,24 +30,26 @@ public class ArithmeticCalculator extends Calculator {
     @Override
     public void calculate() throws DivideException {
 
+        OperatorType operatorType = OperatorType.find(signal);
+
         double result = 0; // 사칙연산 결과 값 저장 변수
-        switch (signal) {
-            case '+':
+        switch (operatorType) {
+            case PLUS:
                 AddOperator addOperator = new AddOperator(left, right);
                 result = addOperator.operate();
                 break;
 
-            case '-':
+            case SUB:
                 SubtractOperator subtractOperator = new SubtractOperator(left, right);
                 result = subtractOperator.operate();
                 break;
 
-            case '*':
+            case MUL:
                 MultiplyOperator multiplyOperator = new MultiplyOperator(left, right);
                 result = multiplyOperator.operate();
                 break;
 
-            case '/':
+            case DIV:
                 if (right == 0) {
                     throw new DivideException("0으로 나눌 수 없습니다. ");
                 }
@@ -55,7 +59,7 @@ public class ArithmeticCalculator extends Calculator {
                 }
                 break;
 
-            case '%' :
+            case MOD:
                 ModOperator modOperator = new ModOperator(left, right);
                 result = modOperator.operate();
         }
