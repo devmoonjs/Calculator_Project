@@ -2,14 +2,13 @@ package calculator;
 import java.util.ArrayList;
 import java.util.List;
 
-import static calculator.OperatorType.PLUS;
-
 public class ArithmeticCalculator extends Calculator {
 
     List<Double> arithlist;
     private double left;
     private double right;
     private char signal;
+    private static double result = 0;
 
     public ArithmeticCalculator() {
         this.arithlist = new ArrayList<>();
@@ -27,44 +26,39 @@ public class ArithmeticCalculator extends Calculator {
         this.signal = signal;
     }
 
+    // signal 기호에 따른 Operator 구현
+    public Operator getOperatorBySignal() {
+        OperatorType operatorType = OperatorType.find(signal);
+
+        switch(operatorType) {
+            case PLUS :
+                return new AddOperator(left, right);
+
+            case SUB :
+                return new SubtractOperator(left, right);
+
+            case MUL :
+                return new MultiplyOperator(left, right);
+
+            case DIV :
+                return new DivideOperator(left, right);
+        }
+        throw new IllegalAccessError("error");
+    }
+
     @Override
     public void calculate() throws DivideException {
 
-        OperatorType operatorType = OperatorType.find(signal);
+        Operator operator = getOperatorBySignal(); // signal 값에 따른 생성자 생성하여 가져오기
+        result = operator.operate(); // 결과 연산
 
-        double result = 0; // 사칙연산 결과 값 저장 변수
-        switch (operatorType) {
-            case PLUS:
-                AddOperator addOperator = new AddOperator(left, right);
-                result = addOperator.operate();
-                break;
-
-            case SUB:
-                SubtractOperator subtractOperator = new SubtractOperator(left, right);
-                result = subtractOperator.operate();
-                break;
-
-            case MUL:
-                MultiplyOperator multiplyOperator = new MultiplyOperator(left, right);
-                result = multiplyOperator.operate();
-                break;
-
-            case DIV:
-                if (right == 0) {
-                    throw new DivideException("0으로 나눌 수 없습니다. ");
-                }
-                else {
-                    DivideOperator divideOperator = new DivideOperator(left, right);
-                    result = divideOperator.operate();
-                }
-                break;
-
-            case MOD:
-                ModOperator modOperator = new ModOperator(left, right);
-                result = modOperator.operate();
-        }
         // list에 결과 저장
         System.out.println("결과 : " + result);
+
+    }
+
+    // 결과 arithList에 저장
+    public void addList() {
         arithlist.add(result);
     }
 
