@@ -4,15 +4,10 @@ import java.util.List;
 
 public class ArithmeticCalculator extends Calculator {
 
-    private List<Double> arithlist;
     private double left;
     private double right;
     private char signal;
     private static double result = 0;
-
-    public ArithmeticCalculator() {
-        this.arithlist = new ArrayList<>();
-    }
 
     public void setLeft(double left) {
         this.left = left;
@@ -24,10 +19,6 @@ public class ArithmeticCalculator extends Calculator {
 
     public void setSignal(char signal) {
         this.signal = signal;
-    }
-
-    public List<Double> getList() {
-        return arithlist;
     }
 
     // signal 기호에 따른 Operator 구현
@@ -54,7 +45,6 @@ public class ArithmeticCalculator extends Calculator {
                 return null;
         }
     }
-
     @Override
     public void calculate() throws DivideException {
 
@@ -63,21 +53,8 @@ public class ArithmeticCalculator extends Calculator {
 
         // list에 결과 출력
         System.out.println("결과 : " + result);
-    }
 
-    // 결과 arithList에 저장
-    public void addList() {
-        arithlist.add(result);
+        // 결과 저장
+        addList(result);
     }
-
-    // 가장 먼저 저장된 데이터 삭제
-    public void removeResult(List<Double> arithlist) {
-        super.removeResult(arithlist);
-    }
-
-    // 결과 전체 리스트 출력
-    public void inquiryResults(List<Double> arithlist) {
-        super.inquiryResults(arithlist);
-    }
-
 }

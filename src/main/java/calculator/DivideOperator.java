@@ -7,6 +7,10 @@ public class DivideOperator implements Operator{
     public DivideOperator(double left, double right) {
         this.left = left;
         this.right = right;
+
+        if (right == 0) {
+            throw new DivideException("0으로 나눌 수 없습니다.");
+        }
     }
 
     public double operate() {
