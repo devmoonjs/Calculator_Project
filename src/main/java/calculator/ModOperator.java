@@ -1,17 +1,17 @@
 package calculator;
 
-public class ModOperator implements Operator{
+public class ModOperator<T extends Number> implements Operator<T> {
 
-    private double left;
-    private double right;
+    private T left;
+    private T right;
 
-    public ModOperator(double left, double right) {
+    public ModOperator(T left, T right) {
         this.left = left;
         this.right = right;
     }
 
     @Override
-    public double operate() {
-        return left % right;
+    public T operate() {
+        return (T) Double.valueOf(left.doubleValue() % right.doubleValue());
     }
 }

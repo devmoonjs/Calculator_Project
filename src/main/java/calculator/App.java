@@ -7,8 +7,8 @@ public class App {
         Scanner sc = new Scanner(System.in);
         String exit = "";
 
-        CircleCalculator circleCalculator = new CircleCalculator();
-        ArithmeticCalculator arithmeticCalculator = new ArithmeticCalculator();
+        CircleCalculator<Double> circleCalculator = new CircleCalculator<>();
+        ArithmeticCalculator<Double> arithmeticCalculator = new ArithmeticCalculator<>();
 
         while(!exit.equals("exit")) {
 
@@ -48,7 +48,7 @@ public class App {
 
                 case 1 : // 원의 너비 계산 구현
                     System.out.println("반지름을 입력하세요 : ");
-                    circleCalculator.setR(sc.nextInt());
+                    circleCalculator.setR(sc.nextDouble());
                     circleCalculator.calculate();
 
                     // 가장 먼저 연산된 결과 삭제

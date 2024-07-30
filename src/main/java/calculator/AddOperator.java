@@ -1,17 +1,18 @@
 package calculator;
 
-public class AddOperator implements Operator {
+public class AddOperator<T extends Number> implements Operator<T> {
 
-    private double left;
-    private double right;
+    private T left;
+    private T right;
 
-    public AddOperator(double left, double right) {
+
+    public AddOperator(T left, T right) {
         this.left = left;
         this.right = right;
     }
 
     @Override
-    public double operate() {
-        return left + right;
+    public T operate() {
+        return (T) Double.valueOf((left.doubleValue() + right.doubleValue()));
     }
 }
