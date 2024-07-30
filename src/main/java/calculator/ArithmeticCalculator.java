@@ -25,25 +25,14 @@ public class ArithmeticCalculator<T extends Number> extends Calculator<T> {
     public Operator<T> getOperatorBySignal() {
         OperatorType operatorType = OperatorType.find(signal);
 
-        switch(operatorType) {
-            case PLUS :
-                return new AddOperator<>(left, right);
-
-            case SUB :
-                return new SubtractOperator<>(left, right);
-
-            case MUL :
-                return new MultiplyOperator<>(left, right);
-
-            case DIV :
-                return new DivideOperator<>(left, right);
-
-            case MOD :
-                return new ModOperator<>(left, right);
-
-            default:
-                return null;
-        }
+        return switch (operatorType) {
+            case PLUS -> new AddOperator<>(left, right);
+            case SUB -> new SubtractOperator<>(left, right);
+            case MUL -> new MultiplyOperator<>(left, right);
+            case DIV -> new DivideOperator<>(left, right);
+            case MOD -> new ModOperator<>(left, right);
+            default -> null;
+        };
     }
     @Override
     public void calculate() throws DivideException {
