@@ -26,4 +26,8 @@ public abstract class Calculator<T extends Number> {
         list.add(result);
     }
 
+    public void clearList() {
+        list.clear();
+    }
+
 }
